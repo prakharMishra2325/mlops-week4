@@ -57,6 +57,7 @@ path = os.path.abspath(pathname)
 img_width, img_height = 150, 150
 
 top_model_weights_path = 'model.weights.h5'
+top_model_complete = 'model.keras'
 train_data_dir = os.path.join('data', 'train')
 validation_data_dir = os.path.join('data', 'validation')
 cats_train_path = os.path.join(path, train_data_dir, 'cats')
@@ -123,6 +124,7 @@ def train_top_model():
               verbose=0,
               callbacks=[TqdmCallback(), CSVLogger("metrics.csv")])
     model.save_weights(top_model_weights_path)
+    model.save(top_model_complete)
 
 
 save_bottlebeck_features()
